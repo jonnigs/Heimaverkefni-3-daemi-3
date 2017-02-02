@@ -5,8 +5,8 @@
 
 using namespace std;
 
-string mostFrequentWords(string text, int k) {
-    vector<string> mengi; //unordered_set;
+vector<string> mostFrequentWords(string text, int k) {
+    vector<string> unordered_set;
     int lengd = text.size();
 
     // Array þar sem hvert sæti mun geyma hlutstreng úr texta
@@ -44,32 +44,30 @@ string mostFrequentWords(string text, int k) {
     // Fer nú í gegnum array-inn hlutstrengir og set inn þá sem að hafa gildi
     for (int i = 0 ; i < lengd-k+1 ; i++) {
         if (talning[i] == max) {
-            mengi[s] = hlutstrengir[i];
+            unordered_set[s] = hlutstrengir[i];
             s++;
         }
     }
-    string test = mengi[0];
-    return test; //unordered_set;
+    return unordered_set;
 }
 
 int main() {
     // Fáum inn textastreng.
-    cout << "Sladu inn streng af stofum" << endl;
+    cout << "Sláðu inn streng af stöfum" << endl;
     string text;
     cin >> text;
 
     // Fáum inn hvaða lengd af hlutstrengjum við viljum.
-    cout << "Hvad viltu leita af longum hlutstrengjum? " << endl;
+    cout << "Hvað viltu leita af löngum hlutstrengjum? " << endl;
     int k;
     cin >> k;
 
     // Keyrum fallið að ofan og skilum útkomunni.
-    string lausn;
-    lausn = mostFrequentWords(text, k);
-    cout << "Algengustu strengir af lengd k eru: " << lausn << endl;
-    //for (int i=0 ; i < 5 ; 1++){
-    //cout << lausn[i];
-    //}
+    vector<string> lausn = mostFrequentWords(text, k);
+    cout << "Algengustu strengir af lengd k eru: " << endl;
+    for (int i=0 ; i < lausn.size() ; 1++){
+        cout << lausn[i];
+    }
 
     return 0;
 }
